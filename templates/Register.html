@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<form  method="POST" id="registerForm">
+  {{ form.hidden_tag() }}
+    <h2>Register</h2>
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+     {{ form.email(class="form-container my-2", placeholder=form.email.label.text) }}
+     {{ form.username(class="form-container my-2", placeholder=form.username.label.text) }}
+     {{ form.password(class="form-container my-2", placeholder=form.password.label.text) }}
+     {{ form.repeat_password(class="form-container my-2", placeholder=form.repeat_password.label.text) }}
+     {{ form.birthday(class="form-container my-2", placeholder=form.birthday.label.text) }}
+     {{ form.gender(class="form-container my-2", placeholder=form.gender.label.text) }}
+     {{ form.register(class="btn btn-primary")}}
+</form>
+{% endblock %}   
+
+{% block contentstyle %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="password"] {
+            width: 91.9%;
+            padding: 10px;
+            margin: 10px 0;
+
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+        }
+    </style>
+    {% endblock %}

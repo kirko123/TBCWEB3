@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+      {% for infos in info %}
+        <div class="languages">
+            <div class="language">
+                <h2>{{infos['name']}}</h2>  
+                <p>{{infos['inf']}}</p>
+                <a href="/info/{{infos['id']}}">more info</a>
+            </div>   
+        </div>
+      {% endfor %}
+       <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-container">
+            {{ form.language(class="textarea", placeholder=form.language.label.text)}}
+            {{ form.find(class="button",placeholder=form.find.text)}}
+        </div>
+      </form>
+    </div>
+{% endblock %}   
+
+{% block contentstyle %}
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  opacity:  0.7;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-gap: 20px;
+  
+  
+}
+
+.languages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.language {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.language:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.language h2 {
+  margin-top: 0;
+}
+
+.language p {
+  margin-bottom: 0;
+}
+
+.form-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #555;
+}
+</style>
+{% endblock %}
+
+   
+   

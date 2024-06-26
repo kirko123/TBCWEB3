@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<form  method="POST" id="searchForm">
+  {{ form.hidden_tag() }}
+    <h2>question</h2>
+    {{ form.language(class="form-container my-2", placeholder=form.language.label.text) }}
+    {{ form.save(class="btn btn-primary")}}
+   
+     
+</form>
+{% endblock %}   
+
+{% block contentstyle %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="password"] {
+            width: 91.9%;
+            padding: 10px;
+            margin: 10px 0;
+
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+        }
+    </style>
+{% endblock %}

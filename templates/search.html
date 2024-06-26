@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<form  method="POST" id="answerForm">
+ <div class="container">
+  {{ form.hidden_tag() }}
+   {%for searchs in search %}    
+      <div class="languages">
+            <div class="language">
+             <h1>{{ searchs['question']}}</h1>
+             {%for answers in answer%}
+             <h1>{{ answers['answer']}}</h1>
+             {% endfor %}
+             {{ form.answer(class="form-container my-2", placeholder=form.answer.label.text) }}
+             {{ form.post(class="btn btn-primary")}}
+             {% if current_user.role == "Admin" %}
+             <a class="btn btn-danger" href="/delete_search/{{ searchs['id'] }}">washla</a>
+             <a class="btn btn-info" href="/edit_search/{{ searchs['id'] }}">redaqtireba</a>
+            {% endif %}
+            </div>   
+      </div>
+   {% endfor %}
+ </div>    
+</form>  
+     {% endblock %}
+
+{% block contentstyle %}
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  opacity:  0.7;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-gap: 20px;
+  
+  
+}
+
+.languages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.language {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.language:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.language h2 {
+  margin-top: 0;
+}
+
+.language p {
+  margin-bottom: 0;
+}
+
+.form-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+</style>
+{% endblock %}

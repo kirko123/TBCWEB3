@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+      <div class="languages">
+        <div class="language">
+            <h2>{{inff['name']}}</h2>  
+            <p>{{inff['inf']}}</p>
+        </div>   
+    </div>
+    <p class="p1">{{inff['moreinfo']}}</p>
+      
+{% endblock %}   
+
+{% block contentstyle %}
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        } 
+       .languages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .language {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .language h2 {
+            margin-top: 0;
+        }
+
+        .language p {
+            margin-bottom: 0;
+        }
+        .p1 {
+            font-size: 20px;
+            padding: 20px;
+            
+        }
+</style>
+{% endblock %}
